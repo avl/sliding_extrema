@@ -3,8 +3,6 @@ name = "sliding_extrema"
 version = "0.1.0"
 authors = ["Anders Musikka <anders@andersmusikka.se>"]
 
-[dev-dependencies]
-rand="*"
 
 description = "Queue data structure with support for an O(1) extrema function over contents (for example, to obtain min and max over a sliding window of samples)"
 
@@ -18,7 +16,6 @@ categories = ["Data structures"]
 license = "MIT/Apache-2.0"
 
 
-
-
-
+[dev-dependencies]
+rand="0.4.2"
 
