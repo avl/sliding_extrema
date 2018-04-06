@@ -1,6 +1,6 @@
 [package]
 name = "sliding_extrema"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Anders Musikka <anders@andersmusikka.se>"]
 
 
@@ -11,7 +11,7 @@ readme = "README.md"
 
 keywords = ["queue"]
 
-categories = ["Data structures"]
+categories = ["data-structures"]
 
 license = "MIT/Apache-2.0"
 
