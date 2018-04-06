@@ -1,0 +1,8 @@
+[package]
+name = "sliding_extrema"
+version = "0.1.0"
+authors = ["Anders Musikka <anders@andersmusikka.se>"]
+
+[dev-dependencies]
+rand="*"
+
