@@ -6,3 +6,19 @@ authors = ["Anders Musikka <anders@andersmusikka.se>"]
 [dev-dependencies]
 rand="*"
 
+description = "Queue data structure with support for an O(1) extrema function over contents (for example, to obtain min and max over a sliding window of samples)"
+
+readme = "README.md"
+
+
+keywords = ["queue"]
+
+categories = ["Data structures"]
+
+license = "MIT/Apache-2.0"
+
+
+
+
+
+
