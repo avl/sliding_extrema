@@ -67,10 +67,22 @@ impl<T:Clone> Minstack<T> {
 
 }
 
+
 pub struct SlidingExtrema<T,F> {
     push_stack : Minstack<T>,
     pop_stack : Minstack<T>,
     extrema_fun : F,
+}
+
+use std::fmt;
+
+impl<T:Clone+fmt::Debug,F:Fn(&T,&T) -> T> fmt::Debug for SlidingExtrema<T,F> {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let mut temp = Vec::new();
+        temp.extend(self.push_stack.data.iter().map(|x|x.0.clone()));
+        temp.extend(self.pop_stack.data.iter().rev().map(|x|x.0.clone()));
+        write!(f, "SlidingExtrema({:?})", temp)
+    }    
 }
 
 
@@ -197,7 +209,7 @@ mod tests {
         assert_eq!(Some(17),t.get_extrema());
         assert_eq!(17,t.pop().unwrap());
         assert_eq!(None,t.get_extrema());
-        
+       
         assert_eq!(None,t.pop());
     }
 }
