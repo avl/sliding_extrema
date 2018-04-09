@@ -84,6 +84,10 @@ impl<T:Clone,F:Fn(&T,&T) -> T> SlidingExtrema<T,F> {
         }
     }
     
+    pub fn len(&self) -> usize {
+        self.push_stack.len() + self.pop_stack.len()
+    }
+    
     pub fn get_extrema(&self) -> Option<T> {
         if self.push_stack.len() == 0 && self.pop_stack.len() == 0 {
             return None;                    
@@ -137,6 +141,7 @@ mod tests {
         }
         
         for _ in 0..num_random_ops {
+            assert_eq!(a.len(),b.len());
             if thread_rng().gen_range(0,2) == 0 {
                 //insert
                 let value = thread_rng().gen_range(0,10);
@@ -158,11 +163,24 @@ mod tests {
     }
     #[test]
     fn fuzz() {
-        for _ in 0..100000 {
+        for _ in 0..1000 {
             test_iter();
         }
         
     }
+    #[test]
+    fn min_and_max() {
+        let mut t = SlidingExtrema::new(|a:&(u32,u32),b:&(u32,u32)|((a.0).min(b.0),(a.1.max(b.1))));
+        t.push((1,1));
+        assert_eq!(t.get_extrema().unwrap(),(1,1));
+        t.push((3,3));
+        assert_eq!(t.get_extrema().unwrap(),(1,3));
+        t.push((2,2));                
+        assert_eq!(t.get_extrema().unwrap(),(1,3));
+        t.pop();
+        assert_eq!(t.get_extrema().unwrap(),(2,3));                
+    }
+    
     #[test]
     fn it_works() {
         let mut t = SlidingExtrema::new(|a:&u32,b:&u32|(*a).min(*b));
