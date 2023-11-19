@@ -1,6 +1,6 @@
 [package]
 name = "sliding_extrema"
-version = "0.1.4"
+version = "0.2.0"
 authors = ["Anders Musikka <anders@andersmusikka.se>"]
 
 
@@ -17,5 +17,5 @@ license = "MIT/Apache-2.0"
 
 
 [dev-dependencies]
-rand="0.7"
+rand="0.8"
 

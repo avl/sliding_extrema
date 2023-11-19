@@ -9,13 +9,12 @@ of extrema-functions are max, min, but not 'average' or 'mean'.
 
 This structure can be used to implement a super-efficient max/min function for a sliding window of many samples.
 
-Example:
+Simple example:
 
 ```
 extern crate sliding_extrema;
-use sliding_extrema::SlidingExtrema;
 
-let mut queue = SlidingExtrema::new(|a:&u32,b:&u32|(*a).max(*b));
+let mut queue = sliding_extrema::sliding_max();
 
 queue.push(42);
 queue.push(15);
@@ -27,8 +26,9 @@ queue.pop();
 
 assert_eq!(queue.get_extrema().unwrap(),15);
 
-
 ```
+
+See docs and test for more advanced examples. 
 
 The structure is covered by an automatic fuzz-test, that should provide 100% test coverage.
 
